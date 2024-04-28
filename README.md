@@ -8,3 +8,14 @@ not compulsory(recommended): make sure you have react install facility installed
 ```javascript
 npm install -g create-react-app
 ```
+
+##Installation Setup:
+1. Open the project in VS Code
+2. change the directory to client
+```javascript
+cd client
+```
+3. Run npm installation command
+```javascript
+npm install
+```
