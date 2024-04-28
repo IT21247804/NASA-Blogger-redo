@@ -5,5 +5,6 @@
 ## Pre-requisites
 not compulsory(recommended): make sure you have react install facility installed : open terminal and run command:
 
+```javascript
 npm install -g create-react-app
-
+```
