@@ -21,7 +21,7 @@ cd client
 npm install
 ```
 ## used technologies
-React
-Google Firebase
-TailWind CSS
-Boostrap
+-React
+-Google Firebase
+-TailWind CSS
+-Boostrap
