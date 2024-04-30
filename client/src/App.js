@@ -6,6 +6,9 @@ import Home from "./components/home";
 import CreatePost from "./components/home/CreatePost";
 import PostHome from "./components/home/PostHome";
 import Apod from "./components/home/Apod";
+import MarsPhotos from "./components/home/MarsPhotos";
+
+
 
 import { AuthProvider } from "./contexts/authContext";
 import { useRoutes } from "react-router-dom";
@@ -40,6 +43,11 @@ function App() {
       path: "/Apod",
       element: <Apod />,
     },
+    {
+      path: "/MarsPhotos",
+      element: <MarsPhotos />,
+    },
+   
   ];
   let routesElement = useRoutes(routesArray);
   return (
