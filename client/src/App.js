@@ -7,7 +7,7 @@ import CreatePost from "./components/home/CreatePost";
 import PostHome from "./components/home/PostHome";
 import Apod from "./components/home/Apod";
 import MarsPhotos from "./components/home/MarsPhotos";
-
+import Imagery from "./components/home/Imagery ";
 
 
 import { AuthProvider } from "./contexts/authContext";
@@ -46,6 +46,10 @@ function App() {
     {
       path: "/MarsPhotos",
       element: <MarsPhotos />,
+    },
+    {
+      path: "/Imagery",
+      element: <Imagery />,
     },
    
   ];
