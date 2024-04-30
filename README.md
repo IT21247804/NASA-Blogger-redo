@@ -10,7 +10,7 @@ open terminal and run command:
 npm install -g create-react-app
 ```
 
-##Installation Setup:
+## Installation Setup:
 1. Open the project in VS Code
 2. change the directory to client
 ```javascript
