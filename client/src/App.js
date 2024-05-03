@@ -58,7 +58,7 @@ function App() {
     
      <AuthProvider>
       <Header />
-      <div className="w-full h-screen flex flex-col">{routesElement}</div>
+      <div className="w-full h-screen flex flex-col" >{routesElement}</div>
     </AuthProvider>
  
    

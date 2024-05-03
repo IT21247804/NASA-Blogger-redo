@@ -35,7 +35,7 @@ const Apod = () => {
     return (
         <div>
         {!userLoggedIn && <Navigate to={'/login'} replace={true} />}
-        <div className="max-w-screen-md mx-auto mt-8">
+        <div className="max-w-screen-md mx-auto mt-12">
             <div className="flex justify-center items-center mb-4">
                 <input
                     type="date"

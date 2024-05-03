@@ -1,27 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuth } from '../../contexts/authContext'
+import Typewriter from "typewriter-effect"
 
 const Home = () => {
     const { currentUser } = useAuth()
+    const [dynamicText, setDynamicText] = useState('')
+    const [typewriterStrings, setTypewriterStrings] = useState([])
+
+    useEffect(() => {
+        if (currentUser.displayName) {
+            setDynamicText(`Hello ${currentUser.displayName}`)
+        } else {
+            setDynamicText(`Hello ${currentUser.email}`)
+        }
+        setTypewriterStrings([dynamicText, 'Welcome to the NASA Blogger'])
+    }, [currentUser, dynamicText])
+
     return (
-       
-        <div className="background-container">
-             {/* <div className='text-2xl font-bold pt-14'>Hello {currentUser.displayName ? currentUser.displayName : currentUser.email}, you are now logged in.</div> */}
-        <div className="sketchfab-embed-wrapper">
-        <iframe
-      title="Stylized planet"
-      frameBorder="0"
-      allowFullScreen
-      mozAllowFullScreen={true}
-      webkitAllowFullScreen={true}
-      allow="autoplay; fullscreen; xr-spatial-tracking"
-      src="https://sketchfab.com/models/789725db86f547fc9163b00f302c3e70/embed?ui_controls=0"
-      execution-while-out-of-viewport
-      execution-while-not-rendered
-      web-share
-      style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
-    ></iframe>
-        </div>
+        <div className='flex justify-center items-center h-screen mx-auto'>
+            <div className='text-center text-lg sm:text-4xl font-bold text-white p-4'>
+                <Typewriter
+                    options={{
+                        strings: typewriterStrings,
+                        autoStart: true,
+                        loop: true,
+                        delay: 50, // Adjust the delay between each character
+                    }}
+                />
+            </div>
         </div>
     )
 }

@@ -24,9 +24,9 @@ function PostHome() {
   }, [deletePost]);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className=" min-h-screen">
       {!userLoggedIn && <Navigate to={'/login'} replace={true} />}
-      <div className="container mx-auto py-8 ">
+      <div className="container mx-auto py-12 ">
         <div className="container m-auto grid gap-4">
           {postLists.map((post) => (
             <div key={post.id} className="bg-white rounded-lg shadow-md p-6">

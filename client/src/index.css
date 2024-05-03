@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background: linear-gradient(to bottom, #041311, #392467 ); 
+  background-attachment: fixed; /* Ensures the background stays fixed as the content scrolls */
+  margin: 0;
+  padding: 0;
+  z-index: 20;
+  }
+
+ 
