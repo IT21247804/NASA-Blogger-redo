@@ -31,13 +31,13 @@ const Header = () => {
                 
                  </div>
                     <div className='text-lg hover:bg-purple-200 rounded-md p-2'>
-                         <Link className='text-purple-600' to={'/Apod'}>Today</Link>
+                         <Link className='text-purple-600' to={'/Apod'}>Apod</Link>
                     </div>
                     <div className='text-lg hover:bg-yellow-200 rounded-md p-2'>
                             <Link className='text-yellow-600' to={'/MarsPhotos'}>Mars</Link>
                     </div>
                     <div className='text-lg hover:bg-green-200 rounded-md p-2'>
-                            <Link className='text-green-600' to={'/Imagery'}>Satellite</Link>
+                            <Link className='text-green-600' to={'/Imagery'}>Earth</Link>
                     </div>
                     <div className='text-lg hover:bg-pink-200 rounded-md p-2'>
                             <Link className='text-pink-600' to={'/PostHome'}>Blogs</Link>
@@ -54,7 +54,12 @@ const Header = () => {
                     </>
                     :
                     <>
-                        
+                    <div className="mx-auto">
+    <h1 className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
+        <span className="text-red-500">NASA</span> <span className="text-blue-500">Blogger</span>
+    </h1>
+         </div>
+
                     </>
             }
         </nav>

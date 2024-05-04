@@ -7,14 +7,26 @@ const EarthImagery = () => {
     const [longitude, setLongitude] = useState('');
     const [date, setDate] = useState('');
     const [imageData, setImageData] = useState(null);
+    const [error, setError] = useState(null);
 
     const fetchImageData = async () => {
-        if (latitude && longitude && date) {
-            const res = await fetch(
-                `https://api.nasa.gov/planetary/earth/imagery?lat=${latitude}&lon=${longitude}&date=${date}&dim=0.15&api_key=${api_key}`
-            );
-            const imageUrl = await res.blob();
-            setImageData(URL.createObjectURL(imageUrl));
+        try {
+            if (latitude && longitude && date) {
+                const res = await fetch(
+                    `https://api.nasa.gov/planetary/earth/imagery?lat=${latitude}&lon=${longitude}&date=${date}&dim=0.15&api_key=${api_key}`
+                );
+
+                if (!res.ok) {
+                    throw new Error('Failed to fetch imagery data');
+                }
+
+                const imageUrl = await res.blob();
+                setImageData(URL.createObjectURL(imageUrl));
+                setError(null);
+            }
+        } catch (error) {
+            setError('Failed to fetch Earth data. Please try with different inputs.');
+            setImageData(null);
         }
     };
 
@@ -64,15 +76,22 @@ const EarthImagery = () => {
                     Fetch Earth Imagery
                 </button>
             </div>
+            {error && (
+                <div className="text-red-500 mb-4">
+                    {error}
+                </div>
+            )}
             {imageData && (
                 <div className="mt-4">
-                    <h2 className="text-lg font-bold mb-2">Image Data</h2>
-                    <img
-                        src={imageData}
-                        alt="Earth Imagery"
-                        className="block mx-auto cursor-zoom-in bg-gray-200 transition duration-300 hover:bg-gray-100 max-w-full h-auto"
-                    />
-                    <p>Date: {date}</p>
+                    <h2 className="text-lg text-white font-bold mb-2">Image Data for Date: {date}</h2>
+                    <h2 className="text-lg text-white font-bold mb-2">Longitude and latitude: {longitude}, {latitude}</h2>
+                    <div className="mt-4 border border-blue-500 rounded-md overflow-hidden">
+                        <img
+                            src={imageData}
+                            alt="Earth Imagery"
+                            className="block mx-auto cursor-zoom-in bg-gray-200  hover:bg-gray-100 max-w-full h-auto"
+                        />
+                    </div>
                 </div>
             )}
         </div>

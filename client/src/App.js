@@ -10,6 +10,7 @@ import MarsPhotos from "./components/home/MarsPhotos";
 import Imagery from "./components/home/Imagery ";
 
 
+
 import { AuthProvider } from "./contexts/authContext";
 import { useRoutes } from "react-router-dom";
 
@@ -58,7 +59,9 @@ function App() {
     
      <AuthProvider>
       <Header />
-      <div className="w-full h-screen flex flex-col" >{routesElement}</div>
+      <div className="w-full h-screen flex flex-col" 
+     
+      >{routesElement}</div>
     </AuthProvider>
  
    
