@@ -22,6 +22,8 @@ npm install
 ```
 ## used technologies
 -React
--Google Firebase
--TailWind CSS
--Boostrap
++Google Firebase
++Google Firestore
+*TailWind CSS
+*Material UI
++Vercel
