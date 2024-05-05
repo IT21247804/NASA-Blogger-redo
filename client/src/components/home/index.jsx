@@ -3,9 +3,11 @@ import { useAuth } from '../../contexts/authContext';
 import Typewriter from "typewriter-effect";
 import mainpic from '../images/mainpic.jpg';
 
+
 const Home = () => {
     const { currentUser } = useAuth();
     const [dynamicText, setDynamicText] = useState('');
+   
 
     useEffect(() => {
         if (currentUser.displayName) {
@@ -20,6 +22,7 @@ const Home = () => {
     };
 
     return (
+        
         <div className='py-8 sm:py-12 h-screen mx-auto relative'>
             <div className='text-center text-lg sm:text-4xl font-bold text-white p-4'>
                 <Typewriter
@@ -79,6 +82,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
+     
     );
 };
 

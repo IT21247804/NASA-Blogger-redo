@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useAuth } from '../../contexts/authContext'
+import {  Navigate, useNavigate } from "react-router-dom";
 
 const api_key = process.env.REACT_APP_NASA_KEY;
 
@@ -8,6 +10,8 @@ const EarthImagery = () => {
     const [date, setDate] = useState('');
     const [imageData, setImageData] = useState(null);
     const [error, setError] = useState(null);
+    const { userLoggedIn } = useAuth()
+    
 
     const fetchImageData = async () => {
         try {
@@ -47,6 +51,8 @@ const EarthImagery = () => {
     };
 
     return (
+        <div>
+        {!userLoggedIn && <Navigate to={'/login'} replace={true} />}
         <div className="max-w-screen-md mx-auto mt-12">
             <div className="flex justify-center items-center mb-4">
                 <input
@@ -94,6 +100,7 @@ const EarthImagery = () => {
                     </div>
                 </div>
             )}
+        </div>
         </div>
     );
 };

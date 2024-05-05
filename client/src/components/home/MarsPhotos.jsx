@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ImageList, ImageListItem, Pagination, PaginationItem } from '@mui/material';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
+import { useAuth } from '../../contexts/authContext'
+import {  Navigate, useNavigate } from "react-router-dom";
 
 
 const api_key = process.env.REACT_APP_NASA_KEY;
@@ -14,6 +16,7 @@ const MarsPhotos = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1); // New state to store total pages
     const [error, setError] = useState(null);
+    const { userLoggedIn } = useAuth()
 
     useEffect(() => {
         if (earthDate) {
@@ -51,6 +54,8 @@ const MarsPhotos = () => {
     };
 
     return (
+        <div>
+        {!userLoggedIn && <Navigate to={'/login'} replace={true} />}
         <div className="max-w-screen-md mx-auto mt-12">
             <div className="flex justify-center items-center mb-4">
               
@@ -113,6 +118,7 @@ const MarsPhotos = () => {
    
 </div>
 
+        </div>
         </div>
     );
 };
