@@ -21,9 +21,9 @@ cd client
 npm install
 ```
 ## used technologies
--React
-+Google Firebase
-+Google Firestore
-*TailWind CSS
-*Material UI
-+Vercel
+1. React
+2. Google Firebase
+3. Google Firestore
+4. TailWind CSS
+5. Material UI
+6. Vercel
