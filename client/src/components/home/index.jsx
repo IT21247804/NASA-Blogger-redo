@@ -16,7 +16,6 @@ const Home = () => {
     }, [currentUser]);
 
     const handleGetStartedClick = () => {
-        // Scroll to the section with the specified ID when "Get Started" button is clicked
         document.getElementById("project-details").scrollIntoView({ behavior: "smooth" });
     };
 
@@ -39,7 +38,6 @@ const Home = () => {
                         html: true,
                     }}
                 />
-                {/* Button to scroll to the project details section */}
                 <button onClick={handleGetStartedClick} className="hidden lg:inline-block mt-4 px-2 py-1 bg-transparent hover:bg-purple-700 border border-purple-700 text-white rounded-md ">
                     Project details
                 </button>
@@ -47,37 +45,36 @@ const Home = () => {
             <img src={mainpic} alt="My Image" />
             
             <div id="project-details" className="text-center text-lg text-white px-4">
-                {/* Your project details content here */}
                 <div className="flex flex-col sm:flex-row justify-center items-center">
                     <div className="sm:w-1/3 sm:mr-4 mb-4 sm:mb-0">
                         <h1 className="text-xl sm:text-4xl mb-2">Project Details</h1>
-                        <p>Name: Assignment 2</p>
-                        <p>Module code: Application Framework</p>
-                        <p>Module code: SE3040</p>
+                        <p className="text-sm sm:text-lg">Name: Assignment 2</p>
+                        <p className="text-sm sm:text-lg">Module code: Application Framework</p>
+                        <p className="text-sm sm:text-lg">Module code: SE3040</p>
                     </div>
                     <div className="sm:w-1/3 sm:mr-4 mb-4 sm:mb-0">
                         <h1 className="text-xl sm:text-4xl mb-2">Used Technologies</h1>
-                        <p>
+                        <p className="text-sm sm:text-lg">
                             Basic/Frontend: <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer" className="text-sky-400">ReactJs</a>
                         </p>
-                        <p>
+                        <p className="text-sm sm:text-lg">
                             Server/Auth: <a href="https://firebase.google.com/" target="_blank" rel="noopener noreferrer" className="text-yellow-800">Firebase</a>
                         </p>
-                        <p>
+                        <p className="text-sm sm:text-lg">
                             Database: <a href="https://firebase.google.com/docs/firestore" target="_blank" rel="noopener noreferrer" className="text-amber-700">Firestore</a>
                         </p>
-                        <p>
+                        <p className="text-sm sm:text-lg">
                             Styling: <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" className="text-cyan-400">Tailwind CSS</a> / <a href="https://mui.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600">Material UI</a>
                         </p>
-                        <p>
+                        <p className="text-sm sm:text-lg">
                             Version Control: <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" className="text-orange-700">Git</a> / <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-stone-950">Github</a>
                         </p>
                     </div>
                     <div className="sm:w-1/3">
                         <h1 className="text-xl sm:text-4xl mb-2">Student Details</h1>
-                        <p>Name: Baddewithana P</p>
-                        <p>IT number: IT21247804</p>
-                        <p>Email: <a href="mailto:IT21247804@my.sliit.lk" className="underline">IT21247804@my.sliit.lk</a></p>
+                        <p className="text-sm sm:text-lg">Name: Baddewithana P</p>
+                        <p className="text-sm sm:text-lg">IT number: IT21247804</p>
+                        <p className="text-sm sm:text-lg">Email: <a href="mailto:IT21247804@my.sliit.lk" className="underline">IT21247804@my.sliit.lk</a></p>
                     </div>
                 </div>
             </div>
