@@ -56,7 +56,7 @@ const Header = () => {
                     <>
                     <div className="mx-auto">
     <h1 className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
-        <span className="text-red-500">NASA</span> <span className="text-blue-500">Blogger -Redo</span>
+        <span className="text-red-500">NASA</span> <span className="text-blue-500">Blogger</span>
     </h1>
          </div>
 
