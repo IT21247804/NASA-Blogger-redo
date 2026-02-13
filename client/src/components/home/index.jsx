@@ -235,14 +235,14 @@ const Home = () => {
       <footer className="border-t border-white/10 bg-black/90">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <div>
-            <p className="text-sm font-semibold text-slate-100">Baddewithana P</p>
+            <p className="text-sm font-semibold text-slate-100">Pasan Baddewithana</p>
             <p className="text-sm text-slate-300">IT21247804</p>
           </div>
           <a
             href="mailto:IT21247804@my.sliit.lk"
             className="text-sm text-sky-300 underline underline-offset-4 transition hover:text-sky-200"
           >
-            IT21247804@my.sliit.lk
+            baddewithanapasan@gmail.com
           </a>
         </div>
       </footer>
