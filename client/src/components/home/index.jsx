@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useAuth } from '../../contexts/authContext';
 import Typewriter from 'typewriter-effect';
 import mainpic from '../images/mainpic.jpg';
+import mainpic2 from '../images/mainpic2.jpg';
 
 const techLogos = [
   { name: 'React', href: 'https://reactjs.org/', logo: 'https://cdn.simpleicons.org/react/61DAFB' },
@@ -12,6 +13,9 @@ const techLogos = [
   { name: 'Git', href: 'https://git-scm.com/', logo: 'https://cdn.simpleicons.org/git/F05032' },
   { name: 'GitHub', href: 'https://github.com/', logo: 'https://cdn.simpleicons.org/github/FFFFFF' },
 ];
+
+const revealClasses =
+  'opacity-0 translate-y-8 transition-all duration-700 will-change-transform';
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -47,102 +51,165 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-  const parallaxStyle = useMemo(
-    () => ({ transform: `translate3d(0, ${scrollY * 0.3}px, 0) scale(1.08)` }),
+  const heroParallaxStyle = useMemo(
+    () => ({ transform: `translate3d(0, ${scrollY * 0.25}px, 0) scale(1.08)` }),
     [scrollY]
   );
 
-  const handleGetStartedClick = () => {
-    document.getElementById('project-details')?.scrollIntoView({ behavior: 'smooth' });
+  const handleScrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <main className="relative overflow-x-hidden text-white">
-      <div className="absolute inset-0 -z-20 overflow-hidden">
-        <img
-          src={mainpic}
-          alt="NASA Blogger Background"
-          className="h-full w-full object-cover will-change-transform"
-          style={parallaxStyle}
-        />
-      </div>
-
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-slate-900/80 to-black/90" />
-
-      <section className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-4 py-16 text-center">
-        <p
-          data-reveal
-          data-aos="fade-up"
-          className="mb-4 rounded-full border border-white/30 bg-black/30 px-4 py-1 text-xs uppercase tracking-[0.2em] text-slate-200 opacity-0 translate-y-8 transition-all duration-700"
-        >
-          Assignment 2 - SE3040
-        </p>
-
-        <h1
-          data-reveal
-          data-aos="zoom-in"
-          className="mb-4 text-3xl font-extrabold leading-tight sm:text-5xl lg:text-6xl opacity-0 translate-y-8 transition-all duration-700"
-        >
-          <span className="text-red-500">NASA</span> <span className="text-blue-500">Blogger</span>
-        </h1>
-
-        <div
-          data-reveal
-          data-aos="fade-up"
-          className="mx-auto mb-8 max-w-3xl text-base font-semibold sm:text-2xl opacity-0 translate-y-8 transition-all duration-700"
-        >
-          <Typewriter
-            options={{
-              strings: [
-                `${dynamicText}`,
-                'Discover the Astronomy Picture of the Day',
-                'Explore Earth views from space',
-                'Browse Mars rover captures',
-                'Read and publish space-inspired blogs',
-              ],
-              autoStart: true,
-              loop: true,
-              delay: 45,
-            }}
+      <section className="relative min-h-screen">
+        <div className="absolute inset-0 -z-20 overflow-hidden">
+          <img
+            src={mainpic}
+            alt="NASA Blogger hero background"
+            className="h-full w-full object-cover will-change-transform"
+            style={heroParallaxStyle}
           />
         </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-slate-900/80 to-black/90" />
 
-        <div data-reveal data-aos="fade-up" className="flex flex-wrap items-center justify-center gap-4 opacity-0 translate-y-8 transition-all duration-700">
-          <button
-            onClick={handleGetStartedClick}
-            className="rounded-md border border-purple-700 bg-transparent px-5 py-2 text-sm font-semibold transition hover:bg-purple-700"
+        <div className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-4 py-16 text-center">
+          <p
+            data-reveal
+            className={`mb-5 rounded-full border border-white/30 bg-black/30 px-4 py-1 text-xs uppercase tracking-[0.2em] text-slate-200 ${revealClasses}`}
           >
-            Project Details
-          </button>
-          <a
-            href="#project-details"
-            className="rounded-md border border-white/40 bg-black/30 px-5 py-2 text-sm font-semibold transition hover:bg-white/10"
+            Assignment 2 - SE3040
+          </p>
+
+          <h1
+            data-reveal
+            className={`mb-4 text-3xl font-extrabold leading-tight sm:text-5xl lg:text-6xl ${revealClasses}`}
           >
-            Explore
-          </a>
+            <span className="text-red-500">NASA</span>{' '}
+            <span className="text-blue-500">Blogger</span>
+          </h1>
+
+          <div
+            data-reveal
+            className={`mx-auto mb-8 max-w-3xl text-base font-semibold sm:text-2xl ${revealClasses}`}
+          >
+            <Typewriter
+              options={{
+                strings: [
+                  `${dynamicText}`,
+                  'Discover the Astronomy Picture of the Day',
+                  'Explore Earth views from space',
+                  'Browse Mars rover captures',
+                  'Read and publish space-inspired blogs',
+                ],
+                autoStart: true,
+                loop: true,
+                delay: 45,
+              }}
+            />
+          </div>
+
+          <div data-reveal className={`flex flex-wrap items-center justify-center gap-4 ${revealClasses}`}>
+            <button
+              onClick={() => handleScrollTo('project-setting')}
+              className="rounded-md border border-purple-700 bg-transparent px-5 py-2 text-sm font-semibold transition hover:bg-purple-700"
+            >
+              Project Setting
+            </button>
+            <button
+              onClick={() => handleScrollTo('technologies')}
+              className="rounded-md border border-white/40 bg-black/30 px-5 py-2 text-sm font-semibold transition hover:bg-white/10"
+            >
+              Technologies
+            </button>
+            <a
+              href="/Assignment%2002.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md border border-sky-400/70 bg-sky-500/10 px-5 py-2 text-sm font-semibold transition hover:bg-sky-500/20"
+            >
+              View Assignment PDF
+            </a>
+          </div>
         </div>
       </section>
 
-      <section id="project-details" className="mx-auto max-w-6xl px-4 pb-20">
-        <div className="grid gap-6 lg:grid-cols-3">
-          <article
-            data-reveal
-            data-aos="fade-right"
-            className="rounded-xl border border-white/20 bg-black/35 p-6 backdrop-blur-sm opacity-0 translate-y-8 transition-all duration-700"
-          >
-            <h2 className="mb-3 text-2xl font-bold">Project</h2>
-            <p className="text-slate-200">Assignment 2</p>
-            <p className="text-slate-200">Application Framework (SE3040)</p>
-            <p className="mt-3 text-sm text-slate-300">A modern NASA-themed web experience built with React.</p>
-          </article>
+      <section id="project-setting" className="relative">
+        <div className="absolute inset-0 -z-20">
+          <img
+            src={mainpic2}
+            alt="Project setting background"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/75 via-slate-900/85 to-black/90" />
 
+        <div className="mx-auto max-w-6xl px-4 py-20">
           <article
             data-reveal
-            data-aos="fade-up"
-            className="rounded-xl border border-white/20 bg-black/35 p-6 backdrop-blur-sm opacity-0 translate-y-8 transition-all duration-700"
+            className={`rounded-2xl border border-white/20 bg-black/40 p-6 shadow-2xl backdrop-blur-sm sm:p-8 ${revealClasses}`}
           >
-            <h2 className="mb-4 text-2xl font-bold">Tech Stack</h2>
-            <div className="grid grid-cols-4 gap-4">
+            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">Project Setting</h2>
+            <p className="mb-6 max-w-3xl text-slate-200">
+              This web application is developed for SE3040 Assignment 02 as a NASA-themed blogging platform where
+              users can explore space data, authenticate securely, and publish blog content.
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-lg border border-white/15 bg-black/30 p-4">
+                <h3 className="mb-2 text-lg font-semibold">Core Modules</h3>
+                <p className="text-sm text-slate-200">APOD, Earth Imagery, Mars Rover Gallery, and community blogging.</p>
+              </div>
+              <div className="rounded-lg border border-white/15 bg-black/30 p-4">
+                <h3 className="mb-2 text-lg font-semibold">Authentication</h3>
+                <p className="text-sm text-slate-200">Firebase Auth with protected pages and user-based personalization.</p>
+              </div>
+              <div className="rounded-lg border border-white/15 bg-black/30 p-4">
+                <h3 className="mb-2 text-lg font-semibold">Data Layer</h3>
+                <p className="text-sm text-slate-200">Firestore-backed blog posts with responsive, modern React UI.</p>
+              </div>
+            </div>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="/Assignment%2002.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md border border-white/40 bg-black/30 px-4 py-2 text-sm font-semibold transition hover:bg-white/10"
+              >
+                Open Assignment in Browser
+              </a>
+              <a
+                href="/Assignment%2002.pdf"
+                download
+                className="rounded-md border border-sky-400/70 bg-sky-500/10 px-4 py-2 text-sm font-semibold transition hover:bg-sky-500/20"
+              >
+                Download Assignment PDF
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="technologies" className="relative">
+        <div className="absolute inset-0 -z-20">
+          <img
+            src={mainpic}
+            alt="Technologies background"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/80 via-slate-900/85 to-black/95" />
+
+        <div className="mx-auto max-w-6xl px-4 py-20">
+          <article
+            data-reveal
+            className={`rounded-2xl border border-white/20 bg-black/40 p-6 shadow-2xl backdrop-blur-sm sm:p-8 ${revealClasses}`}
+          >
+            <h2 className="mb-3 text-2xl font-bold sm:text-3xl">Technologies</h2>
+            <p className="mb-6 text-slate-200">Built with modern frontend tools and cloud services for performance, scale, and maintainability.</p>
+
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7">
               {techLogos.map((tech) => (
                 <a
                   key={tech.name}
@@ -150,30 +217,35 @@ const Home = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={tech.name}
-                  className="group flex items-center justify-center rounded-lg border border-white/15 bg-black/25 p-3 transition hover:border-white/50 hover:bg-white/10"
+                  className="group flex flex-col items-center justify-center gap-2 rounded-lg border border-white/15 bg-black/30 p-4 transition hover:border-white/50 hover:bg-white/10"
                 >
-                  <img src={tech.logo} alt={tech.name} className="h-8 w-8 object-contain transition group-hover:scale-110" />
+                  <img
+                    src={tech.logo}
+                    alt={tech.name}
+                    className="h-8 w-8 object-contain transition group-hover:scale-110"
+                  />
+                  <span className="text-xs font-medium text-slate-100">{tech.name}</span>
                 </a>
               ))}
             </div>
           </article>
-
-          <article
-            data-reveal
-            data-aos="fade-left"
-            className="rounded-xl border border-white/20 bg-black/35 p-6 backdrop-blur-sm opacity-0 translate-y-8 transition-all duration-700"
-          >
-            <h2 className="mb-3 text-2xl font-bold">Student</h2>
-            <p className="text-slate-200">Baddewithana P</p>
-            <p className="text-slate-200">IT21247804</p>
-            <p className="mt-1 text-slate-200">
-              <a href="mailto:IT21247804@my.sliit.lk" className="underline underline-offset-4 hover:text-sky-300">
-                IT21247804@my.sliit.lk
-              </a>
-            </p>
-          </article>
         </div>
       </section>
+
+      <footer className="border-t border-white/10 bg-black/90">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <div>
+            <p className="text-sm font-semibold text-slate-100">Baddewithana P</p>
+            <p className="text-sm text-slate-300">IT21247804</p>
+          </div>
+          <a
+            href="mailto:IT21247804@my.sliit.lk"
+            className="text-sm text-sky-300 underline underline-offset-4 transition hover:text-sky-200"
+          >
+            IT21247804@my.sliit.lk
+          </a>
+        </div>
+      </footer>
     </main>
   );
 };
